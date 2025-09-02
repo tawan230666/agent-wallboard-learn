@@ -1,0 +1,22 @@
+[
+  {
+    "code": "A001",
+    "name": "John Doe",
+    "status": "Active"
+  },
+  {
+    "code": "A002",
+    "name": "Jane Smith",
+    "status": "Active"
+  },
+  {
+    "code": "A003",
+    "name": "Mike Lee",
+    "status": "Not Ready"
+  },
+  {
+    "code": "A004",
+    "name": "Alice",
+    "status": "Offline"
+  }
+]
