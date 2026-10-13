@@ -10,7 +10,8 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 // ===== Persistence (agents.json) =====
-const DATA_FILE = path.resolve(__dirname, 'agents.json');
+// AGENTS_FILE lets tests use a throwaway copy instead of the real data file.
+const DATA_FILE = path.resolve(process.env.AGENTS_FILE || path.join(__dirname, 'agents.json'));
 
 function loadAgents() {
   try {
@@ -199,6 +200,11 @@ app.use((err, req, res, next) => {
 });
 
 // ===== Start =====
-app.listen(PORT, () => {
-  console.log(`🚀 Agent Wallboard server running at http://localhost:${PORT}`);
-});
+// Only listen when run directly (`node server.js`); tests import the app.
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`🚀 Agent Wallboard server running at http://localhost:${PORT}`);
+  });
+}
+
+module.exports = app;
